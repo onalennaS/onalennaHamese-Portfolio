@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Full-Stack Developer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Onalenna Hamese Portfolio</a>
+            <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contact Content -->
+    <main class="main-content">
+        <section class="section">
+            <h1 class="section-title">Get In Touch</h1>
+            <div class="contact-intro">
+                <p>Ready to start your next project? I'd love to hear from you. Whether you have a specific project in mind or just want to discuss possibilities, feel free to reach out.</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Work Together</h3>
+                    <p>I'm always interested in new opportunities and collaborations. Here's how you can reach me:</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <h4>💼 Professional Inquiries</h4>
+                            <p>For project discussions, collaborations, and business opportunities.</p>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <h4>🤝 Networking</h4>
+                            <p>Connect with me for industry discussions and knowledge sharing.</p>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <h4>📚 Mentoring</h4>
+                            <p>Questions about development, career advice, or learning resources.</p>
+                        </div>
+                    </div>
+
+                    <div class="response-time">
+                        <h4>Response Time</h4>
+                        <p>I typically respond to messages within 24-48 hours. For urgent inquiries, please mention it in your subject line.</p>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <div class="contact-form">
+                        <form id="contactForm" onsubmit="handleContactForm(event)">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Company/Organization</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="project">New Project Inquiry</option>
+                                    <option value="collaboration">Collaboration Opportunity</option>
+                                    <option value="consultation">Technical Consultation</option>
+                                    <option value="networking">Networking</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="budget">Project Budget Range</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select budget range (optional)</option>
+                                    <option value="under-5k">Under $5,000</option>
+                                    <option value="5k-10k">$5,000 - $10,000</option>
+                                    <option value="10k-25k">$10,000 - $25,000</option>
+                                    <option value="25k-50k">$25,000 - $50,000</option>
+                                    <option value="over-50k">Over $50,000</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="timeline">Project Timeline</label>
+                                <select id="timeline" name="timeline">
+                                    <option value="">Select timeline (optional)</option>
+                                    <option value="asap">ASAP</option>
+                                    <option value="1-month">Within 1 month</option>
+                                    <option value="2-3-months">2-3 months</option>
+                                    <option value="3-6-months">3-6 months</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="6" required placeholder="Tell me more about your project, goals, and any specific requirements..."></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="updates" name="updates">
+                                    <span class="checkmark"></span>
+                                    I'd like to receive occasional updates about your work and new projects
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-loading" style="display: none;">Sending...</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-footer">
+                <h3>Other Ways to Connect</h3>
+                <p>While the contact form above is the best way to reach me for professional inquiries, you can also find me on various professional platforms. I'm always open to connecting with fellow developers and industry professionals.</p>
+                
+                <div class="social-note">
+                    <p><strong>Note:</strong> I prioritize responding to messages sent through this contact form as they reach me directly and allow for more detailed communication about your specific needs.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
