@@ -177,6 +177,44 @@
             25% { transform: translateX(-2px); }
             75% { transform: translateX(2px); }
         }
+        @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background: white;
+        padding: 1rem;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: inline-block;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #333;
+        margin-left: auto;
+    }
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -277,25 +315,25 @@
                                 <i class="fab fa-html5"></i>
                                 <h4>HTML5</h4>
                                 <p>Semantic markup</p>
-                                <div class="skill-level">95%</div>
+                                
                             </div>
                             <div class="skill-item skill-css" data-skill="css">
                                 <i class="fab fa-css3-alt"></i>
                                 <h4>CSS3</h4>
                                 <p>Modern styling</p>
-                                <div class="skill-level">90%</div>
+                                
                             </div>
                             <div class="skill-item skill-javascript" data-skill="js">
                                 <i class="fab fa-js-square"></i>
                                 <h4>JavaScript</h4>
                                 <p>ES6+ features</p>
-                                <div class="skill-level">85%</div>
+                                
                             </div>
                             <div class="skill-item skill-bootstrap" data-skill="bootstrap">
                                 <i class="fab fa-bootstrap"></i>
                                 <h4>Bootstrap</h4>
                                 <p>Responsive design</p>
-                                <div class="skill-level">80%</div>
+                                
                             </div>
                         </div>
                     </div>
@@ -308,25 +346,25 @@
                                 <i class="fab fa-java"></i>
                                 <h4>Java</h4>
                                 <p>Enterprise apps</p>
-                                <div class="skill-level">88%</div>
+                                
                             </div>
                             <div class="skill-item skill-php" data-skill="php">
                                 <i class="fab fa-php"></i>
                                 <h4>PHP</h4>
                                 <p>Server-side logic</p>
-                                <div class="skill-level">75%</div>
+                                
                             </div>
                             <div class="skill-item skill-python" data-skill="python">
                                 <i class="fab fa-python"></i>
                                 <h4>Python</h4>
                                 <p>Versatile development</p>
-                                <div class="skill-level">82%</div>
+                                
                             </div>
                             <div class="skill-item skill-firebase" data-skill="firebase">
                                 <i class="fas fa-fire"></i>
                                 <h4>Firebase</h4>
                                 <p>Cloud services</p>
-                                <div class="skill-level">70%</div>
+                                
                             </div>
                         </div>
                     </div>
@@ -339,25 +377,25 @@
                                 <i class="fas fa-database"></i>
                                 <h4>MySQL</h4>
                                 <p>Relational DB</p>
-                                <div class="skill-level">85%</div>
+                                
                             </div>
                             <div class="skill-item skill-database" data-skill="sqlite">
                                 <i class="fas fa-table"></i>
                                 <h4>SQLite</h4>
                                 <p>Lightweight DB</p>
-                                <div class="skill-level">80%</div>
+                                
                             </div>
                             <div class="skill-item skill-database" data-skill="mariadb">
                                 <i class="fas fa-server"></i>
                                 <h4>MariaDB</h4>
                                 <p>Open source DB</p>
-                                <div class="skill-level">78%</div>
+                                
                             </div>
                             <div class="skill-item skill-framework" data-skill="frameworks">
                                 <i class="fas fa-cogs"></i>
                                 <h4>Frameworks</h4>
                                 <p>Various tools</p>
-                                <div class="skill-level">83%</div>
+                                
                             </div>
                         </div>
                     </div>

@@ -402,3 +402,4 @@ function toggleMenu() {
                 this.style.transform = 'translateY(0) scale(1)';
             });
         });
+        

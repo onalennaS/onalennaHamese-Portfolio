@@ -294,6 +294,44 @@
                 font-size: 0.7rem;
             }
         }
+        @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 1rem;
+        background: white;
+        padding: 1rem;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: inline-block;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #333;
+        margin-left: auto;
+    }
+
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -468,7 +506,7 @@
                     <h3>Let's Connect</h3>
                     <p>I'm always interested in discussing new opportunities, innovative projects, or potential collaborations. Whether you're looking for a dedicated IT professional or want to explore how technology can solve your challenges, I'd love to hear from you.</p>
                     <div class="contact-info-about">
-                        <p><strong>Location:</strong> Emdo Park, Polokwane, Limpopo</p>
+                        
                         <p><strong>Email:</strong> onalennahamese07@gmail.com</p>
                         <p><strong>Phone:</strong> +27 66 265 8784</p>
                         <p><strong>Mobility:</strong> Code 10 Licensed Driver - Available for travel</p>
@@ -534,6 +572,15 @@
                 notification.classList.remove('show');
             }, 2000);
         }
+        
     </script>
+    <script>
+    function toggleMobileMenu() {
+        const navLinks = document.getElementById('navLinks');
+        navLinks.classList.toggle('show');
+    }
+</script>
+
+    <script src="script.js"></script>
 </body>
 </html>
