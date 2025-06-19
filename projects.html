@@ -3,14 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Full-Stack Developer</title>
+    <title>Projects - Seja Onalenna Hamese</title>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+
+        
+        .project-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-ongoing {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .project-role {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .project-role h4 {
+            margin: 0 0 8px 0;
+            color: #1976d2;
+        }
+        
+        .project-achievements {
+            background: #f1f8e9;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .project-achievements h4 {
+            margin: 0 0 8px 0;
+            color: #388e3c;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Onalenna Hamese Portfolio</a>
+            <a href="index.html" class="logo">Seja Onalenna Hamese Portfolio</a>
             <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="nav-link">Home</a></li>
@@ -24,85 +72,133 @@
     <!-- Projects Content -->
     <main class="main-content">
         <section class="section">
-            <h1 class="section-title">Featured Projects</h1>
-            <p class="projects-intro">Here are some of the projects I've worked on that showcase my full-stack development capabilities. Each project represents a unique challenge and demonstrates different aspects of my technical expertise.</p>
+            <!-- Projects Header with Image -->
+            <div class="about-header">
+                <div class="profile-image-container">
+                   <img src="js/images/image2.jpg" alt="Seja Onalenna Hamese - Full-Stack Developer" class="profile-image">
+                </div>
+                <div class="about-header-text">
+                    <h1 class="section-title">My Projects Portfolio</h1>
+                    <p class="intro-text">Here are the key projects I've developed during my Information Technology studies at Vaal University of Technology. Each project demonstrates my growth as a developer and showcases different aspects of my technical expertise in full-stack development, database management, and user experience design.</p>
+                </div>
+            </div>
             
             <div class="projects-grid">
+                <!-- MICTSETA Online Recruitment System -->
                 <div class="project-card featured">
                     <div class="project-header">
-                        <h3>VersityFinds - Online Marketplace</h3>
-                        <span class="project-tag">E-commerce Platform</span>
+                        <h3>MICTSETA Online Recruitment System
+                            
+                        </h3>
+                        <span class="project-tag">Enterprise Web Application</span>
                     </div>
+                    
                     <div class="project-body">
-                        <p>A comprehensive ecommerce platform and online marketplace that connects buyers and sellers. Built with modern web technologies to provide a seamless shopping experience with secure transactions and user-friendly interface.</p>
+                        <p>A comprehensive online recruitment platform developed for MICTSETA to enhance and streamline the recruitment process. This enterprise-level application features a complete candidate management system with advanced authentication and data management capabilities.</p>
                         
-                        <div class="project-features">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>User registration and authentication system</li>
-                                <li>Product catalog with search and filtering</li>
-                                <li>Shopping cart and checkout process</li>
-                                <li>Secure payment integration</li>
-                                <li>Seller dashboard and inventory management</li>
-                                <li>Order tracking and management</li>
-                            </ul>
+                        <div class="project-role">
+                            <h4>My Role & Contributions</h4>
+                            <p>Full-stack developer responsible for both front-end and back-end development. Led the implementation of user authentication systems and created responsive user interfaces for optimal user experience across all devices.</p>
                         </div>
                         
-                        <div class="project-tech">
-                            <h4>Technologies Used:</h4>
-                            <div class="tech-tags">
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS3</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">PHP</span>
-                                <span class="tech-tag">MySQL</span>
-                            </div>
+                        
+                        
+                        <div class="project-achievements">
+                            <h4>Key Achievements</h4>
+                            <p>Successfully delivered a production-ready recruitment platform that improved candidate experience and streamlined HR processes. Gained valuable experience in enterprise-level application development and advanced database management.</p>
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://versityfinds.co.za" class="project-link primary" target="_blank">Visit Live Site →</a>
+                            <a href="https://e-recruitment-hvbyabbba8gfb6dx.southafricanorth-01.azurewebsites.net/" class="project-link primary" target="_blank">View Live Platform →</a>
+                            
                         </div>
                     </div>
                 </div>
                 
+                <!-- VersityFinds Marketplace -->
                 <div class="project-card featured">
                     <div class="project-header">
-                        <h3>MICT SETA Recruitment Platform</h3>
-                        <span class="project-tag">Enterprise Application</span>
+                        <h3>VersityFinds Marketplace
+                            
+                            
+                        </h3>
+                        <span class="project-tag">E-commerce Platform</span>
                     </div>
+                    
                     <div class="project-body">
-                        <p>A professional recruitment platform designed to streamline the hiring process. Features include job posting management, candidate applications, and comprehensive admin dashboard for efficient recruitment workflows.</p>
+                        <p>An innovative e-commerce marketplace specifically designed for university students to buy and sell products within their academic community. This platform bridges the gap between student buyers and sellers, creating a trusted environment for academic and lifestyle products.</p>
                         
-                        <div class="project-features">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>Job posting and management system</li>
-                                <li>Candidate application portal</li>
-                                <li>Resume and document upload functionality</li>
-                                <li>Application tracking and status updates</li>
-                                <li>Admin dashboard with analytics</li>
-                                <li>Email notifications and communications</li>
-                            </ul>
+                        <div class="project-role">
+                            <h4>My Role & Contributions</h4>
+                            <p>Lead developer responsible for the complete development lifecycle from conceptualization to deployment. Focused on creating an intuitive user experience tailored to student needs and preferences.</p>
                         </div>
                         
-                        <div class="project-tech">
-                            <h4>Technologies Used:</h4>
-                            <div class="tech-tags">
-                                <span class="tech-tag">HTML5</span>
-                                <span class="tech-tag">CSS3</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">Backend Framework</span>
-                                <span class="tech-tag">Database</span>
-                            </div>
+                        
+                        
+                        <div class="project-achievements">
+                            <h4>Key Achievements</h4>
+                            <p>Created a fully functional marketplace that addresses real student needs. Implemented secure user authentication and developed a scalable database architecture to support growing user base.</p>
                         </div>
                         
                         <div class="project-links">
-                            <a href="https://e-recruitment-hvbyabbba8gfb6dx.southafricanorth-01.azurewebsites.net/" class="project-link primary" target="_blank">View Platform →</a>
+                            <a href="https://versityfinds.co.za" class="project-link primary" target="_blank">Visit Live Site →</a>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Restaurant Web Application -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Restaurant Management System
+                            
+                        </h3>
+                        <span class="project-tag">Web Application</span>
+                    </div>
+                    
+                    <div class="project-body">
+                        <p>A comprehensive restaurant management web application designed to streamline restaurant operations from menu management to order processing. Features an intuitive interface for both customers and restaurant staff.</p>
+                        
+                        <div class="project-role">
+                            <h4>My Role & Contributions</h4>
+                            <p>Full-stack developer responsible for creating a complete restaurant management solution. Focused on user experience design and efficient backend processes for restaurant operations.</p>
+                        </div>
+                        
+                        
+                        <div class="project-achievements">
+                            <h4>Key Achievements</h4>
+                            <p>Developed a user-friendly restaurant management system that improves operational efficiency. Successfully implemented real-time order processing and integrated payment functionality.</p>
+                        </div>
+                        
+                        
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Skills Showcase Section -->
+            <div class="skills-showcase">
+                <h2>Technical Skills Demonstrated</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <h4>Frontend Development</h4>
+                        <p>HTML5, CSS3, JavaScript, Bootstrap, Responsive Design</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Backend Development</h4>
+                        <p>Django, PHP, Python, Database Integration</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>Database Management</h4>
+                        <p>MySQL, Firebase, SQLite, Advanced Querying</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>User Experience</h4>
+                        <p>UI/UX Design, Mobile-First Approach, Accessibility</p>
+                    </div>
+                </div>
+            </div>
             
         </section>
     </main>
