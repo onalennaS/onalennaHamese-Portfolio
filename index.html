@@ -3,46 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Portfolio - Onalenna Hamese</title>
+    <title>Portfolio - White, Black & Light Brown Theme</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
     <style>
-        
-        /* Minimal additional styles for new features */
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            padding-top: 100px;
+            background: linear-gradient(135deg, #f8f6f3 0%, #e8e2db 50%, #d4c4b0 100%);
+            min-height: 100vh;
+        }
+
+        /* Contact Bar Styles */
         .contact-bar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(26, 26, 26, 0.95);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(212, 196, 176, 0.3);
             z-index: 1000;
             padding: 10px 0;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
         .contact-bar.scrolled {
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.98);
             backdrop-filter: blur(20px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
         
-        /* Add padding to body to account for fixed contact bar */
-        body {
-            padding-top: 100px;
-        }
-        
-         .contact-info {
+        .contact-info {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
             margin-bottom: 0px;
-            color: white;
+            color: #f8f6f3;
         }
         
         .contact-pills-container {
@@ -50,18 +59,19 @@
             justify-content: center;
             gap: 15px;
             flex-wrap: wrap;
-            margin-top: 90px; /* Increased from 10px to move pills down */
+            margin-top: 10px;
+            padding: 0 20px;
         }
         
         .contact-pill {
-            background: #D4B896; /* Light brown background */
+            background: #d4c4b0;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 184, 150, 0.8); /* Light brown border */
+            border: 1px solid rgba(212, 196, 176, 0.8);
             border-radius: 25px;
             padding: 8px 16px;
             display: flex;
             align-items: center;
-            gap: 8px; /* Increased gap between icon and text */
+            gap: 8px;
             cursor: grab;
             transition: all 0.3s ease;
             user-select: none;
@@ -70,7 +80,7 @@
         }
         
         .contact-pill:hover {
-            background: #C4A882; /* Slightly darker brown on hover */
+            background: #c2b298;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
@@ -88,19 +98,20 @@
         }
         
         .contact-pill a {
-            color: white; /* White text */
+            color: #1a1a1a;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: opacity 0.3s ease;
+            font-size: 0.9rem;
         }
         
         .contact-pill a:hover {
-            opacity: 0.9;
+            opacity: 0.8;
         }
         
         .contact-pill i {
             font-size: 1.1em;
-            color: white; /* White icons */
+            color: #1a1a1a;
         }
         
         .status-info {
@@ -110,7 +121,304 @@
             font-size: 0.85em;
             opacity: 0.9;
         }
-        
+
+        /* Navigation Styles */
+        .navbar {
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 120px;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(212, 196, 176, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #8b7355;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1a1a1a;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .hero-text {
+            text-align: left;
+            color: #1a1a1a;
+        }
+
+        /* Profile Image Container */
+        .profile-image-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 2rem auto;
+            border: 4px solid rgba(26, 26, 26, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: rgba(248, 246, 243, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .highlight {
+            color: #8b7355;
+            position: relative;
+            font-weight: 800;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            color: #2a2a2a;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            color: #f8f6f3;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(26, 26, 26, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(26, 26, 26, 0.4);
+            background: linear-gradient(45deg, #2a2a2a, #3a3a3a);
+        }
+
+        /* Code Block */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .code-block {
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(212, 196, 176, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 100%;
+        }
+
+        .code-block pre {
+            color: #d4c4b0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 4rem 2rem;
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+
+        .skills-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            color: #4a4a4a;
+        }
+
+        .skills-categories {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            border-color: #d4c4b0;
+        }
+
+        .skill-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #8b7355;
+        }
+
+        .skill-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .skill-item p {
+            color: #4a4a4a;
+            font-size: 0.9rem;
+        }
+
+        /* Tech Highlight */
+        .tech-highlight {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: #f8f6f3;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 3rem;
+            border: 1px solid rgba(212, 196, 176, 0.2);
+        }
+
+        .tech-highlight h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-highlight p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .tech-badge {
+            background: rgba(212, 196, 176, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 196, 176, 0.3);
+            color: #d4c4b0;
+        }
+
+        /* Animations */
         .typing-animation {
             border-right: 2px solid;
             animation: blink 1s infinite;
@@ -121,26 +429,28 @@
             51%, 100% { border-color: currentColor; }
         }
         
-        .floating-elements {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
+        .pulse-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #8b7355;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            margin: 0 5px;
         }
         
-        .floating-icon {
-            position: absolute;
-            font-size: 20px;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px); }
+            75% { transform: translateX(2px); }
         }
-        
+
         .matrix-bg {
             position: absolute;
             top: 0;
@@ -154,67 +464,203 @@
             line-height: 14px;
             overflow: hidden;
         }
-        
-        .pulse-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #00ff00;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-            margin: 0 5px;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-            100% { opacity: 1; transform: scale(1); }
-        }
 
-        /* Add some shake animation keyframes for the pills */
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-2px); }
-            75% { transform: translateX(2px); }
-        }
+        /* MOBILE RESPONSIVE STYLES */
         @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 1rem;
-        background: white;
-        padding: 1rem;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 200px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        z-index: 999;
-    }
+            body {
+                padding-top: 140px;
+            }
 
-    .nav-links.show {
-        display: flex;
-    }
+            .navbar {
+                top: 140px;
+            }
 
-    .mobile-menu {
-        display: inline-block;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #333;
-        margin-left: auto;
-    }
+            .main-content {
+                margin-top: 60px;
+            }
 
-    .nav-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
-    }
-}
+            /* Contact pills mobile fixes */
+            .contact-pills-container {
+                gap: 8px;
+                margin-top: 5px;
+                padding: 0 10px;
+            }
 
+            .contact-pill {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .contact-pill a {
+                font-size: 0.8rem;
+            }
+
+            .contact-pill i {
+                font-size: 1rem;
+            }
+
+            /* Navigation mobile styles */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(248, 246, 243, 0.98);
+                padding: 1rem;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 200px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                z-index: 999;
+                border: 1px solid rgba(212, 196, 176, 0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: inline-block;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            /* Hero section mobile fixes */
+            .hero {
+                padding: 1rem;
+                min-height: auto;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+                order: 2;
+            }
+
+            .hero-visual {
+                order: 1;
+            }
+
+            /* Profile image mobile fixes */
+            .profile-image-container {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto 1.5rem auto;
+                border-width: 6px;
+            }
+
+            .profile-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+            }
+
+            /* Hero text mobile */
+            .hero-text h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Code block mobile */
+            .code-block {
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+
+            .code-block pre {
+                font-size: 0.7rem;
+            }
+
+            /* Skills section mobile */
+            .skills-section {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .skill-item {
+                padding: 1rem;
+            }
+
+            .skill-item i {
+                font-size: 2rem;
+            }
+
+            .tech-highlight {
+                padding: 2rem 1rem;
+                margin-top: 2rem;
+            }
+
+            .tech-highlight h3 {
+                font-size: 1.5rem;
+            }
+
+            .tech-badges {
+                gap: 0.5rem;
+            }
+
+            .tech-badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .contact-pills-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .contact-pill {
+                width: fit-content;
+                min-width: 200px;
+                justify-content: center;
+            }
+
+            .profile-image-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -223,23 +669,21 @@
         <div class="contact-info">
             <div class="status-info">
                 <span class="pulse-dot"></span>
-                <span id="status-text">Available for projects</span>
+                <span>Available for opportunities</span>
             </div>
         </div>
-        
-        <!-- Draggable Contact Pills -->
         <div class="contact-pills-container">
-            <div class="contact-pill" draggable="true" data-contact="phone">
-                <i class="fas fa-phone"></i>
-                <a href="tel:0662658784">066 265 8784</a>
-            </div>
-            <div class="contact-pill" draggable="true" data-contact="email">
+            <div class="contact-pill">
                 <i class="fas fa-envelope"></i>
                 <a href="mailto:onalennahamese07@gmail.com">onalennahamese07@gmail.com</a>
             </div>
-            <div class="contact-pill" draggable="true" data-contact="github">
+            <div class="contact-pill">
                 <i class="fab fa-github"></i>
                 <a href="https://github.com/onalennaS" target="_blank">github.com/onalennaS</a>
+            </div>
+            <div class="contact-pill">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+27662658784">066 265 8784</a>
             </div>
         </div>
     </div>
@@ -247,40 +691,35 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Onalenna Hamese Portfolio</a>
+            <a href="#" class="logo">Portfolio</a>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                 <li><a href="#skills">Skills</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                
             </ul>
-            <button class="mobile-menu" onclick="toggleMenu()">
+            <button class="mobile-menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
 
-    <div class="main-content">
+    <!-- Main Content -->
+    <main class="main-content">
         <!-- Hero Section -->
-        <section id="home" class="hero">
-            
-            <div class="matrix-bg" id="matrix-bg"></div>
+        <section class="hero" id="home">
             <div class="hero-content">
                 <div class="hero-text">
                     <div class="profile-image-container">
-                    <img src="js/images/image.jpg" alt="Seja Onalenna Hamese - Information Technology Student" class="profile-image">
-                </div>
-                    <h1>Full Stack <span class="highlight typing-animation" id="dynamic-title">Developer</span></h1>
-                    <p id="dynamic-subtitle">Building innovative solutions with modern technologies and creative problem-solving approaches.</p>
-                    <div style="margin: 20px 0;">
-                       
+                         <img src="js/images/image.jpg" alt="Seja Onalenna Hamese - Information Technology Student" class="profile-image">
                     </div>
-                   
+                    <h1>Hi, I'm <span class="highlight">Seja Onalenna Hamese</span></h1>
+                    <p>A passionate developer crafting digital experiences with clean code and creative solutions. I specialize in modern web development and love turning complex problems into elegant solutions.</p>
+                    <a href="#contact" class="cta-button">Get In Touch</a>
                 </div>
                 <div class="hero-visual">
                     <div class="code-block">
-                         <a href="#skills" class="cta-button" id="explore-btn">Explore My Skills</a>
                         <pre><code id="animated-code">function createSolution() {
     const skills = [
         'Frontend',
@@ -315,25 +754,21 @@
                                 <i class="fab fa-html5"></i>
                                 <h4>HTML5</h4>
                                 <p>Semantic markup</p>
-                                
                             </div>
                             <div class="skill-item skill-css" data-skill="css">
                                 <i class="fab fa-css3-alt"></i>
                                 <h4>CSS3</h4>
                                 <p>Modern styling</p>
-                                
                             </div>
                             <div class="skill-item skill-javascript" data-skill="js">
                                 <i class="fab fa-js-square"></i>
                                 <h4>JavaScript</h4>
                                 <p>ES6+ features</p>
-                                
                             </div>
                             <div class="skill-item skill-bootstrap" data-skill="bootstrap">
                                 <i class="fab fa-bootstrap"></i>
                                 <h4>Bootstrap</h4>
                                 <p>Responsive design</p>
-                                
                             </div>
                         </div>
                     </div>
@@ -346,25 +781,21 @@
                                 <i class="fab fa-java"></i>
                                 <h4>Java</h4>
                                 <p>Enterprise apps</p>
-                                
                             </div>
                             <div class="skill-item skill-php" data-skill="php">
                                 <i class="fab fa-php"></i>
                                 <h4>PHP</h4>
                                 <p>Server-side logic</p>
-                                
                             </div>
                             <div class="skill-item skill-python" data-skill="python">
                                 <i class="fab fa-python"></i>
                                 <h4>Python</h4>
                                 <p>Versatile development</p>
-                                
                             </div>
                             <div class="skill-item skill-firebase" data-skill="firebase">
                                 <i class="fas fa-fire"></i>
                                 <h4>Firebase</h4>
                                 <p>Cloud services</p>
-                                
                             </div>
                         </div>
                     </div>
@@ -377,25 +808,21 @@
                                 <i class="fas fa-database"></i>
                                 <h4>MySQL</h4>
                                 <p>Relational DB</p>
-                                
                             </div>
                             <div class="skill-item skill-database" data-skill="sqlite">
                                 <i class="fas fa-table"></i>
                                 <h4>SQLite</h4>
                                 <p>Lightweight DB</p>
-                                
                             </div>
                             <div class="skill-item skill-database" data-skill="mariadb">
                                 <i class="fas fa-server"></i>
                                 <h4>MariaDB</h4>
                                 <p>Open source DB</p>
-                                
                             </div>
                             <div class="skill-item skill-framework" data-skill="frameworks">
                                 <i class="fas fa-cogs"></i>
                                 <h4>Frameworks</h4>
                                 <p>Various tools</p>
-                                
                             </div>
                         </div>
                     </div>
@@ -419,376 +846,12 @@
     </div>
 
     <script>
-        // Toggle mobile menu
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-        }
-
-        // Dynamic typing effect for title
-        const titles = ['Developer', 'Problem Solver', 'Code Architect', 'Tech Enthusiast'];
-        let currentTitleIndex = 0;
-        let currentCharIndex = 0;
-        let isDeleting = false;
-
-        function typeTitle() {
-            const dynamicTitle = document.getElementById('dynamic-title');
-            const currentTitle = titles[currentTitleIndex];
-            
-            if (isDeleting) {
-                dynamicTitle.textContent = currentTitle.substring(0, currentCharIndex - 1);
-                currentCharIndex--;
-            } else {
-                dynamicTitle.textContent = currentTitle.substring(0, currentCharIndex + 1);
-                currentCharIndex++;
-            }
-
-            if (!isDeleting && currentCharIndex === currentTitle.length) {
-                setTimeout(() => isDeleting = true, 2000);
-            } else if (isDeleting && currentCharIndex === 0) {
-                isDeleting = false;
-                currentTitleIndex = (currentTitleIndex + 1) % titles.length;
-            }
-
-            setTimeout(typeTitle, isDeleting ? 100 : 200);
-        }
-
-        // Dynamic subtitle rotation
-        const subtitles = [
-            'Building innovative solutions with modern technologies and creative problem-solving approaches.',
-            'Crafting seamless user experiences with cutting-edge full-stack development.',
-            'Transforming ideas into scalable, efficient, and beautiful applications.',
-            'Passionate about clean code, optimal performance, and continuous learning.'
-        ];
-        let currentSubtitleIndex = 0;
-
-        function rotateSubtitle() {
-            const subtitleElement = document.getElementById('dynamic-subtitle');
-            subtitleElement.style.opacity = '0';
-            
-            setTimeout(() => {
-                subtitleElement.textContent = subtitles[currentSubtitleIndex];
-                subtitleElement.style.opacity = '1';
-                currentSubtitleIndex = (currentSubtitleIndex + 1) % subtitles.length;
-            }, 500);
-        }
-
-        // Animated counters
-        function animateCounter(elementId, target, suffix = '') {
-            const element = document.getElementById(elementId);
-            let current = 0;
-            const increment = target / 100;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target.toLocaleString() + suffix;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current).toLocaleString() + suffix;
-                }
-            }, 50);
-        }
-
-        // Matrix rain effect
-        function createMatrixRain() {
-            const matrix = document.getElementById('matrix-bg');
-            const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz{}[]()<>+-*/=';
-            let drops = [];
-            
-            function initMatrix() {
-                const columns = Math.floor(window.innerWidth / 20);
-                drops = [];
-                for (let i = 0; i < columns; i++) {
-                    drops[i] = 1;
-                }
-            }
-            
-            function drawMatrix() {
-                matrix.innerHTML = '';
-                const columns = Math.floor(window.innerWidth / 20);
-                
-                for (let i = 0; i < columns; i++) {
-                    const char = chars[Math.floor(Math.random() * chars.length)];
-                    const span = document.createElement('span');
-                    span.textContent = char;
-                    span.style.position = 'absolute';
-                    span.style.left = i * 20 + 'px';
-                    span.style.top = drops[i] * 20 + 'px';
-                    span.style.color = '#00ff00';
-                    matrix.appendChild(span);
-                    
-                    if (drops[i] * 20 > window.innerHeight && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-            }
-            
-            initMatrix();
-            setInterval(drawMatrix, 100);
-        }
-
-        // Draggable contact pills functionality
-        let draggedPill = null;
-        let pillPositions = new Map();
-
-        function initDraggablePills() {
-            const pills = document.querySelectorAll('.contact-pill');
-            
-            pills.forEach(pill => {
-                // Store original position
-                const rect = pill.getBoundingClientRect();
-                pillPositions.set(pill, {
-                    originalX: rect.left,
-                    originalY: rect.top,
-                    currentX: rect.left,
-                    currentY: rect.top
-                });
-                
-                // Mouse events for desktop
-                pill.addEventListener('mousedown', startDrag);
-                
-                // Touch events for mobile
-                pill.addEventListener('touchstart', startDragTouch, { passive: false });
-            });
-            
-            // Global mouse events
-            document.addEventListener('mousemove', drag);
-            document.addEventListener('mouseup', endDrag);
-            
-            // Global touch events
-            document.addEventListener('touchmove', dragTouch, { passive: false });
-            document.addEventListener('touchend', endDragTouch);
-        }
-
-        function startDrag(e) {
-            draggedPill = e.currentTarget;
-            draggedPill.classList.add('dragging');
-            
-            const rect = draggedPill.getBoundingClientRect();
-            draggedPill.offsetX = e.clientX - rect.left;
-            draggedPill.offsetY = e.clientY - rect.top;
-            
-            e.preventDefault();
-        }
-
-        function startDragTouch(e) {
-            draggedPill = e.currentTarget;
-            draggedPill.classList.add('dragging');
-            
-            const rect = draggedPill.getBoundingClientRect();
-            const touch = e.touches[0];
-            draggedPill.offsetX = touch.clientX - rect.left;
-            draggedPill.offsetY = touch.clientY - rect.top;
-            
-            e.preventDefault();
-        }
-
-        function drag(e) {
-            if (!draggedPill) return;
-            
-            const x = e.clientX - draggedPill.offsetX;
-            const y = e.clientY - draggedPill.offsetY;
-            
-            draggedPill.style.left = x + 'px';
-            draggedPill.style.top = y + 'px';
-            
-            // Update position in map
-            const pos = pillPositions.get(draggedPill);
-            pos.currentX = x;
-            pos.currentY = y;
-        }
-
-        function dragTouch(e) {
-            if (!draggedPill) return;
-            
-            const touch = e.touches[0];
-            const x = touch.clientX - draggedPill.offsetX;
-            const y = touch.clientY - draggedPill.offsetY;
-            
-            draggedPill.style.left = x + 'px';
-            draggedPill.style.top = y + 'px';
-            
-            // Update position in map
-            const pos = pillPositions.get(draggedPill);
-            pos.currentX = x;
-            pos.currentY = y;
-            
-            e.preventDefault();
-        }
-
-        function endDrag(e) {
-            if (!draggedPill) return;
-            
-            draggedPill.classList.remove('dragging');
-            
-            // Add a fun bounce effect
-            draggedPill.style.transition = 'transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-            draggedPill.style.transform = 'scale(1)';
-            
-            // Reset transition after animation
-            setTimeout(() => {
-                draggedPill.style.transition = 'all 0.3s ease';
-            }, 300);
-            
-            draggedPill = null;
-        }
-
-        function endDragTouch(e) {
-            if (!draggedPill) return;
-            
-            draggedPill.classList.remove('dragging');
-            
-            // Add a fun bounce effect
-            draggedPill.style.transition = 'transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-            draggedPill.style.transform = 'scale(1)';
-            
-            // Reset transition after animation
-            setTimeout(() => {
-                draggedPill.style.transition = 'all 0.3s ease';
-            }, 300);
-            
-            draggedPill = null;
-        }
-
-        // Reset pills to original position on double click
-        function resetPillPositions() {
-            const pills = document.querySelectorAll('.contact-pill');
-            
-            pills.forEach(pill => {
-                pill.addEventListener('dblclick', () => {
-                    pill.style.left = '';
-                    pill.style.top = '';
-                    pill.style.position = 'relative';
-                    pill.style.transform = 'scale(1.1)';
-                    
-                    setTimeout(() => {
-                        pill.style.transform = 'scale(1)';
-                    }, 200);
-                });
-            });
-        }
-
-        // Add pill shake animation on hover
-        function addPillAnimations() {
-            const pills = document.querySelectorAll('.contact-pill');
-            
-            pills.forEach(pill => {
-                pill.addEventListener('mouseenter', () => {
-                    if (!pill.classList.contains('dragging')) {
-                        pill.style.animation = 'shake 0.5s ease-in-out';
-                    }
-                });
-                
-                pill.addEventListener('mouseleave', () => {
-                    pill.style.animation = '';
-                });
-            });
-        }
-
-        // Status text rotation
-        const statusTexts = [
-            'Available for projects',
-            'Open to collaboration',
-            'Ready to innovate',
-            'Let\'s build something amazing'
-        ];
-        let currentStatusIndex = 0;
-
-        function rotateStatus() {
-            const statusElement = document.getElementById('status-text');
-            statusElement.style.opacity = '0.5';
-            
-            setTimeout(() => {
-                statusElement.textContent = statusTexts[currentStatusIndex];
-                statusElement.style.opacity = '1';
-                currentStatusIndex = (currentStatusIndex + 1) % statusTexts.length;
-            }, 300);
-        }
-
-        // Skill hover effects
-        function addSkillHoverEffects() {
-            const skillItems = document.querySelectorAll('.skill-item');
-            
-            skillItems.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    const skillLevel = this.querySelector('.skill-level');
-                    if (skillLevel) {
-                        skillLevel.style.opacity = '1';
-                        skillLevel.style.transform = 'translateY(-10px)';
-                    }
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    const skillLevel = this.querySelector('.skill-level');
-                    if (skillLevel) {
-                        skillLevel.style.opacity = '0';
-                        skillLevel.style.transform = 'translateY(0)';
-                    }
-                });
-            });
-        }
-
-        // CTA button pulse effect
-        function addCTAPulse() {
-            const ctaButton = document.getElementById('explore-btn');
-            let pulseCount = 0;
-            
-            function pulse() {
-                ctaButton.style.transform = 'scale(1.05)';
-                setTimeout(() => {
-                    ctaButton.style.transform = 'scale(1)';
-                }, 200);
-                
-                pulseCount++;
-                if (pulseCount < 3) {
-                    setTimeout(pulse, 400);
-                } else {
-                    pulseCount = 0;
-                    setTimeout(() => {
-                        pulse();
-                    }, 5000);
-                }
-            }
-            
-            pulse();
-        }
-
-        // Initialize all animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Start typing animation
-            setTimeout(typeTitle, 1000);
-            
-            // Start subtitle rotation
-            setTimeout(() => {
-                setInterval(rotateSubtitle, 8000);
-            }, 3000);
-            
-            // Start counters
-            setTimeout(() => {
-                animateCounter('code-counter', 50000);
-                animateCounter('coffee-counter', 847);
-            }, 2000);
-            
-            // Start matrix effect
-            createMatrixRain();
-            
-            // Start status rotation
-            setTimeout(() => {
-                setInterval(rotateStatus, 4000);
-            }, 5000);
-            
-            // Initialize draggable pills
-            setTimeout(initDraggablePills, 1000);
-            resetPillPositions();
-            addPillAnimations();
-            
-            // Add skill effects
-            addSkillHoverEffects();
-            
-            // Start CTA pulse
-            setTimeout(addCTAPulse, 3000);
         });
 
         // Smooth scrolling for navigation links
@@ -805,22 +868,14 @@
             });
         });
 
-        // Add scroll effects with enhanced sticky behavior
-        window.addEventListener('scroll', function() {
+        // Contact bar scroll effect
+        window.addEventListener('scroll', () => {
             const contactBar = document.querySelector('.contact-bar');
-            
             if (window.scrollY > 50) {
                 contactBar.classList.add('scrolled');
             } else {
                 contactBar.classList.remove('scrolled');
             }
-        });
-        
-        // Ensure contact bar stays visible on page load
-        window.addEventListener('load', function() {
-            const contactBar = document.querySelector('.contact-bar');
-            contactBar.style.display = 'block';
-            contactBar.style.visibility = 'visible';
         });
     </script>
 </body>

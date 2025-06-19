@@ -4,106 +4,558 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Seja Onalenna Hamese</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            padding-top: 100px;
+            background: linear-gradient(135deg, #f8f6f3 0%, #e8e2db 50%, #d4c4b0 100%);
+            min-height: 100vh;
+        }
+
+        /* Contact Bar Styles - Same as about page */
+        .contact-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(212, 196, 176, 0.3);
+            z-index: 1000;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
         
-        .project-status {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8em;
+        .contact-bar.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 0px;
+            color: #f8f6f3;
+        }
+        
+        .contact-pills-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            padding: 0 20px;
+        }
+        
+        .contact-pill {
+            background: #d4c4b0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 196, 176, 0.8);
+            border-radius: 25px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            user-select: none;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .contact-pill:hover {
+            background: #c2b298;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .contact-pill:active {
+            cursor: grabbing;
+            transform: scale(1.05);
+        }
+        
+        .contact-pill.dragging {
+            position: fixed;
+            z-index: 9999;
+            transform: rotate(5deg) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .contact-pill a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .contact-pill a:hover {
+            opacity: 0.8;
+        }
+        
+        .contact-pill i {
+            font-size: 1.1em;
+            color: #1a1a1a;
+        }
+        
+        .status-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        /* Navigation Styles - Same as about page */
+        .navbar {
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 120px;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(212, 196, 176, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
             font-weight: 500;
-            margin-left: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #8b7355;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1a1a1a;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Project page specific styles */
+        .about-header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-image-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(26, 26, 26, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: rgba(248, 246, 243, 0.8);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .about-header-text {
+            min-width: 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 196, 176, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card.featured {
+            border-left: 5px solid #8b7355;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .project-tag {
+            background: linear-gradient(135deg, #8b7355, #a68968);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-body p {
+            color: #4a4a4a;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-role, .project-achievements {
+            background: #f8f6f3;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #8b7355;
+        }
+
+        .project-role h4, .project-achievements h4 {
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link.primary {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: white;
+        }
+
+        .project-link.primary:hover {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            transform: translateY(-2px);
+        }
+
+        /* Skills Showcase */
+        .skills-showcase {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-showcase h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: #f8f6f3;
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(212, 196, 176, 0.3);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .skill-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .skill-item p {
+            color: #4a4a4a;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        .pulse-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #8b7355;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            margin: 0 5px;
         }
         
-        .status-completed {
-            background: #d4edda;
-            color: #155724;
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
         }
-        
-        .status-ongoing {
-            background: #fff3cd;
-            color: #856404;
-        }
-        
-        .project-role {
-            background: #e3f2fd;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-            border-left: 4px solid #2196f3;
-        }
-        
-        .project-role h4 {
-            margin: 0 0 8px 0;
-            color: #1976d2;
-        }
-        
-        .project-achievements {
-            background: #f1f8e9;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 15px 0;
-            border-left: 4px solid #4caf50;
-        }
-        
-        .project-achievements h4 {
-            margin: 0 0 8px 0;
-            color: #388e3c;
-        }
+
+        /* MOBILE RESPONSIVE STYLES */
         @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 1rem;
-        background: white;
-        padding: 1rem;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 200px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        z-index: 999;
-    }
+            body {
+                padding-top: 140px;
+            }
 
-    .nav-links.show {
-        display: flex;
-    }
+            .navbar {
+                top: 140px;
+            }
 
-    .mobile-menu {
-        display: inline-block;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #333;
-        margin-left: auto;
-    }
+            .main-content {
+                margin-top: 60px;
+                padding: 1rem;
+            }
 
-    .nav-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
-    }
-}
+            /* Contact pills mobile fixes */
+            .contact-pills-container {
+                gap: 8px;
+                margin-top: 5px;
+                padding: 0 10px;
+            }
 
+            .contact-pill {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .contact-pill a {
+                font-size: 0.8rem;
+            }
+
+            .contact-pill i {
+                font-size: 1rem;
+            }
+
+            /* Navigation mobile styles */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(248, 246, 243, 0.98);
+                padding: 1rem;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 200px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                z-index: 999;
+                border: 1px solid rgba(212, 196, 176, 0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: inline-block;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .about-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .profile-image-container {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .contact-pills-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .contact-pill {
+                width: fit-content;
+                min-width: 200px;
+                justify-content: center;
+            }
+
+            .profile-image-container {
+                width: 120px;
+                height: 120px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Contact Bar - Same as about page -->
+    <div class="contact-bar">
+        <div class="contact-info">
+            <div class="status-info">
+                <span class="pulse-dot"></span>
+                <span>Available for opportunities</span>
+            </div>
+        </div>
+        <div class="contact-pills-container">
+            <div class="contact-pill">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:onalennahamese07@gmail.com">onalennahamese07@gmail.com</a>
+            </div>
+            <div class="contact-pill">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/onalennaS" target="_blank">github.com/onalennaS</a>
+            </div>
+            <div class="contact-pill">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+27662658784">066 265 8784</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation - Same as about page -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Seja Onalenna Hamese Portfolio</a>
-            <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="projects.html" class="nav-link active">Projects</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <a href="index.html" class="logo">Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+               
             </ul>
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -125,9 +577,7 @@
                 <!-- MICTSETA Online Recruitment System -->
                 <div class="project-card featured">
                     <div class="project-header">
-                        <h3>MICTSETA Online Recruitment System
-                            
-                        </h3>
+                        <h3>MICTSETA Online Recruitment System</h3>
                         <span class="project-tag">Enterprise Web Application</span>
                     </div>
                     
@@ -139,8 +589,6 @@
                             <p>Full-stack developer responsible for both front-end and back-end development. Led the implementation of user authentication systems and created responsive user interfaces for optimal user experience across all devices.</p>
                         </div>
                         
-                        
-                        
                         <div class="project-achievements">
                             <h4>Key Achievements</h4>
                             <p>Successfully delivered a production-ready recruitment platform that improved candidate experience and streamlined HR processes. Gained valuable experience in enterprise-level application development and advanced database management.</p>
@@ -148,7 +596,6 @@
                         
                         <div class="project-links">
                             <a href="https://e-recruitment-hvbyabbba8gfb6dx.southafricanorth-01.azurewebsites.net/" class="project-link primary" target="_blank">View Live Platform →</a>
-                            
                         </div>
                     </div>
                 </div>
@@ -156,10 +603,7 @@
                 <!-- VersityFinds Marketplace -->
                 <div class="project-card featured">
                     <div class="project-header">
-                        <h3>VersityFinds Marketplace
-                            
-                            
-                        </h3>
+                        <h3>VersityFinds Marketplace</h3>
                         <span class="project-tag">E-commerce Platform</span>
                     </div>
                     
@@ -171,8 +615,6 @@
                             <p>Lead developer responsible for the complete development lifecycle from conceptualization to deployment. Focused on creating an intuitive user experience tailored to student needs and preferences.</p>
                         </div>
                         
-                        
-                        
                         <div class="project-achievements">
                             <h4>Key Achievements</h4>
                             <p>Created a fully functional marketplace that addresses real student needs. Implemented secure user authentication and developed a scalable database architecture to support growing user base.</p>
@@ -180,8 +622,6 @@
                         
                         <div class="project-links">
                             <a href="https://versityfinds.co.za" class="project-link primary" target="_blank">Visit Live Site →</a>
-                            
-                            
                         </div>
                     </div>
                 </div>
@@ -189,9 +629,7 @@
                 <!-- Restaurant Web Application -->
                 <div class="project-card">
                     <div class="project-header">
-                        <h3>Restaurant Management System
-                            
-                        </h3>
+                        <h3>Restaurant Management System</h3>
                         <span class="project-tag">Web Application</span>
                     </div>
                     
@@ -203,13 +641,9 @@
                             <p>Full-stack developer responsible for creating a complete restaurant management solution. Focused on user experience design and efficient backend processes for restaurant operations.</p>
                         </div>
                         
-                        
                         <div class="project-achievements">
                             <h4>Key Achievements</h4>
                             <p>Developed a user-friendly restaurant management system that improves operational efficiency. Successfully implemented real-time order processing and integrated payment functionality.</p>
-                        </div>
-                        
-                        
                         </div>
                     </div>
                 </div>
@@ -237,17 +671,41 @@
                     </div>
                 </div>
             </div>
-            
         </section>
     </main>
 
-    <script src="script.js"></script>
     <script>
-    function toggleMobileMenu() {
-        const navLinks = document.getElementById('navLinks');
-        navLinks.classList.toggle('show');
-    }
-</script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
 
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact bar scroll effect
+        window.addEventListener('scroll', () => {
+            const contactBar = document.querySelector('.contact-bar');
+            if (window.scrollY > 50) {
+                contactBar.classList.add('scrolled');
+            } else {
+                contactBar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>

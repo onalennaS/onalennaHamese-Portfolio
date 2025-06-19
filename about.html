@@ -4,8 +4,265 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Seja Onalenna Hamese</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            padding-top: 100px;
+            background: linear-gradient(135deg, #f8f6f3 0%, #e8e2db 50%, #d4c4b0 100%);
+            min-height: 100vh;
+        }
+
+        /* Contact Bar Styles - Same as index */
+        .contact-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(212, 196, 176, 0.3);
+            z-index: 1000;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-bar.scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 0px;
+            color: #f8f6f3;
+        }
+        
+        .contact-pills-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            padding: 0 20px;
+        }
+        
+        .contact-pill {
+            background: #d4c4b0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 196, 176, 0.8);
+            border-radius: 25px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: grab;
+            transition: all 0.3s ease;
+            user-select: none;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .contact-pill:hover {
+            background: #c2b298;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .contact-pill:active {
+            cursor: grabbing;
+            transform: scale(1.05);
+        }
+        
+        .contact-pill.dragging {
+            position: fixed;
+            z-index: 9999;
+            transform: rotate(5deg) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .contact-pill a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .contact-pill a:hover {
+            opacity: 0.8;
+        }
+        
+        .contact-pill i {
+            font-size: 1.1em;
+            color: #1a1a1a;
+        }
+        
+        .status-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85em;
+            opacity: 0.9;
+        }
+
+        /* Navigation Styles - Same as index */
+        .navbar {
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            top: 120px;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(212, 196, 176, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #8b7355;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1a1a1a;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About page specific styles */
+        .about-header {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-image-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(26, 26, 26, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: rgba(248, 246, 243, 0.8);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .about-header-text {
+            min-width: 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .about-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .about-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(212, 196, 176, 0.2);
+        }
+
+        .about-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .about-section p {
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
         .mobility-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -46,353 +303,294 @@
             margin-right: 0.5rem;
             font-size: 1.2rem;
         }
-        
-        .gallery-section {
-            margin: 3rem 0;
-            text-align: center;
-        }
-        
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+
+        .skills-highlight {
+            background: linear-gradient(135deg, #f8f6f3, #e8e2db);
+            padding: 3rem;
+            border-radius: 20px;
             margin: 2rem 0;
         }
-        
-        .gallery-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .skills-highlight h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
         }
-        
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
-        
-        .gallery-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
+
+        .skill-item {
+            background: white;
             padding: 1.5rem;
-            transform: translateY(100%);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
         }
-        
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
+
+        .skill-item:hover {
+            transform: translateY(-5px);
         }
-        
-        .professional-snapshot {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+
+        .skill-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .skill-item p {
+            color: #4a4a4a;
+            font-size: 0.9rem;
+        }
+
+        .academic-excellence {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 3rem;
             border-radius: 20px;
-            padding: 2rem;
             margin: 2rem 0;
+        }
+
+        .academic-excellence h3 {
             text-align: center;
-            position: relative;
-        }
-        
-        .professional-snapshot::before {
-            content: "💼";
-            position: absolute;
-            top: 20px;
-            right: 20px;
             font-size: 2rem;
-            opacity: 0.6;
+            margin-bottom: 2rem;
+            color: #1a1a1a;
         }
-        
-        /* Contact Sidebar Styles */
-        .contact-sidebar {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1000;
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .achievement-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #1a1a1a;
+        }
+
+        .about-cta {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: #f8f6f3;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .about-cta h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-info-about {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-        }
-        
-        .contact-item {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 10px 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 250px;
-            transform: translateX(200px);
-        }
-        
-        .contact-item:hover {
-            transform: translateX(0);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            gap: 0.5rem;
             font-size: 1rem;
-            flex-shrink: 0;
-            cursor: pointer;
         }
-        
-        .phone-icon {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        .contact-info-about p {
+            margin-bottom: 0.5rem;
         }
-        
-        .email-icon {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-        
-        .github-icon {
-            background: linear-gradient(135deg, #4c63d2 0%, #2c3e50 100%);
-        }
-        
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            flex-grow: 1;
-            min-width: 0;
-        }
-        
-        .contact-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .contact-value {
-            font-size: 0.85rem;
-            color: #333;
-            font-weight: 500;
-            cursor: pointer;
-            transition: color 0.2s ease;
-            word-break: break-all;
-        }
-        
-        .contact-value:hover {
-            color: #667eea;
-        }
-        
-        .copy-btn {
-            background: #667eea;
-            color: white;
-            border: none;
+
+        /* Animations */
+        .pulse-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #8b7355;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-        }
-        
-        .copy-btn:hover {
-            background: #764ba2;
-            transform: scale(1.1);
-        }
-        
-        .copy-btn.copied {
-            background: #4caf50;
-            animation: pulse 0.6s ease-in-out;
+            animation: pulse 2s infinite;
+            margin: 0 5px;
         }
         
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Notification popup */
-        .copy-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #4caf50;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            z-index: 1001;
-            transform: translateX(300px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .copy-notification.show {
-            transform: translateX(0);
-            opacity: 1;
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
+        /* MOBILE RESPONSIVE STYLES */
         @media (max-width: 768px) {
-            .image-gallery {
+            body {
+                padding-top: 140px;
+            }
+
+            .navbar {
+                top: 140px;
+            }
+
+            .main-content {
+                margin-top: 60px;
+                padding: 1rem;
+            }
+
+            /* Contact pills mobile fixes */
+            .contact-pills-container {
+                gap: 8px;
+                margin-top: 5px;
+                padding: 0 10px;
+            }
+
+            .contact-pill {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .contact-pill a {
+                font-size: 0.8rem;
+            }
+
+            .contact-pill i {
+                font-size: 1rem;
+            }
+
+            /* Navigation mobile styles */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(248, 246, 243, 0.98);
+                padding: 1rem;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                width: 200px;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                z-index: 999;
+                border: 1px solid rgba(212, 196, 176, 0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: inline-block;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .about-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .profile-image-container {
+                width: 150px;
+                height: 150px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
-            
+
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
+
             .mobility-section::before {
                 font-size: 2rem;
                 right: 15px;
                 top: 15px;
             }
-            
-            .contact-sidebar {
-                right: 10px;
-                gap: 10px;
+        }
+
+        /* Extra small mobile devices */
+        @media (max-width: 480px) {
+            .contact-pills-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
             }
-            
-            .contact-item {
-                transform: translateX(150px);
-                max-width: 200px;
-                padding: 8px 12px;
+
+            .contact-pill {
+                width: fit-content;
+                min-width: 200px;
+                justify-content: center;
             }
-            
-            .contact-item:hover {
-                transform: translateX(0);
+
+            .profile-image-container {
+                width: 120px;
+                height: 120px;
             }
-            
-            .contact-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
-            }
-            
-            .contact-value {
-                font-size: 0.75rem;
-            }
-            
-            .copy-btn {
-                width: 25px;
-                height: 25px;
-                font-size: 0.7rem;
+
+            .section-title {
+                font-size: 1.8rem;
             }
         }
-        @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 1rem;
-        background: white;
-        padding: 1rem;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 200px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        z-index: 999;
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
-    .mobile-menu {
-        display: inline-block;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: #333;
-        margin-left: auto;
-    }
-
-    .nav-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
-    }
-}
-
     </style>
 </head>
 <body>
-    <!-- Copy Notification -->
-    <div id="copyNotification" class="copy-notification">
-        Copied to clipboard! ✓
-    </div>
-
-    <!-- Contact Sidebar -->
-    <div class="contact-sidebar">
-        <div class="contact-item">
-            <div class="contact-icon phone-icon">
-                📞
+    <!-- Contact Bar - Same as index -->
+    <div class="contact-bar">
+        <div class="contact-info">
+            <div class="status-info">
+                <span class="pulse-dot"></span>
+                <span>Available for opportunities</span>
             </div>
-            <div class="contact-details">
-                <div class="contact-label">Phone</div>
-                <div class="contact-value" onclick="copyToClipboard('+27662658784')">+27 66 265 8784</div>
-            </div>
-            <button class="copy-btn" onclick="copyToClipboard('+27662658784')" title="Copy phone number">
-                📋
-            </button>
         </div>
-        
-        <div class="contact-item">
-            <div class="contact-icon email-icon">
-                📧
+        <div class="contact-pills-container">
+            <div class="contact-pill">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:onalennahamese07@gmail.com">onalennahamese07@gmail.com</a>
             </div>
-            <div class="contact-details">
-                <div class="contact-label">Email</div>
-                <div class="contact-value" onclick="copyToClipboard('onalennahamese07@gmail.com')">onalennahamese07@gmail.com</div>
+            <div class="contact-pill">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/onalennaS" target="_blank">github.com/onalennaS</a>
             </div>
-            <button class="copy-btn" onclick="copyToClipboard('onalennahamese07@gmail.com')" title="Copy email address">
-                📋
-            </button>
-        </div>
-        
-        <div class="contact-item">
-            <div class="contact-icon github-icon">
-                🐙
+            <div class="contact-pill">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+27662658784">066 265 8784</a>
             </div>
-            <div class="contact-details">
-                <div class="contact-label">GitHub</div>
-                <div class="contact-value" onclick="copyToClipboard('https://github.com/onalennaS')">github.com/onalennaS</div>
-            </div>
-            <button class="copy-btn" onclick="copyToClipboard('https://github.com/onalennaS')" title="Copy GitHub URL">
-                📋
-            </button>
         </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation - Same as index -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">Seja Onalenna Hamese Portfolio</a>
-            <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            <a href="index.html" class="logo">Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                
             </ul>
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -450,8 +648,6 @@
                     </div>
                 </div>
 
-                
-
                 <div class="skills-highlight">
                     <h3>What I Bring to the Table</h3>
                     <div class="skills-grid">
@@ -506,7 +702,6 @@
                     <h3>Let's Connect</h3>
                     <p>I'm always interested in discussing new opportunities, innovative projects, or potential collaborations. Whether you're looking for a dedicated IT professional or want to explore how technology can solve your challenges, I'd love to hear from you.</p>
                     <div class="contact-info-about">
-                        
                         <p><strong>Email:</strong> onalennahamese07@gmail.com</p>
                         <p><strong>Phone:</strong> +27 66 265 8784</p>
                         <p><strong>Mobility:</strong> Code 10 Licensed Driver - Available for travel</p>
@@ -516,71 +711,38 @@
         </section>
     </main>
 
-    <script src="script.js"></script>
     <script>
-        // Copy to clipboard functionality
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(function() {
-                showCopyNotification();
-                // Add visual feedback to copy button
-                const copyBtns = document.querySelectorAll('.copy-btn');
-                copyBtns.forEach(btn => {
-                    if (btn.getAttribute('onclick').includes(text)) {
-                        btn.classList.add('copied');
-                        btn.innerHTML = '✓';
-                        setTimeout(() => {
-                            btn.classList.remove('copied');
-                            btn.innerHTML = '📋';
-                        }, 1500);
-                    }
-                });
-            }).catch(function(err) {
-                console.error('Could not copy text: ', err);
-                // Fallback for older browsers
-                fallbackCopyTextToClipboard(text);
-            });
-        }
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
 
-        // Fallback copy method for older browsers
-        function fallbackCopyTextToClipboard(text) {
-            const textArea = document.createElement("textarea");
-            textArea.value = text;
-            textArea.style.top = "0";
-            textArea.style.left = "0";
-            textArea.style.position = "fixed";
-            document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            
-            try {
-                const successful = document.execCommand('copy');
-                if (successful) {
-                    showCopyNotification();
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-            } catch (err) {
-                console.error('Fallback: Could not copy text: ', err);
+            });
+        });
+
+        // Contact bar scroll effect
+        window.addEventListener('scroll', () => {
+            const contactBar = document.querySelector('.contact-bar');
+            if (window.scrollY > 50) {
+                contactBar.classList.add('scrolled');
+            } else {
+                contactBar.classList.remove('scrolled');
             }
-            
-            document.body.removeChild(textArea);
-        }
-
-        // Show copy notification
-        function showCopyNotification() {
-            const notification = document.getElementById('copyNotification');
-            notification.classList.add('show');
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 2000);
-        }
-        
+        });
     </script>
-    <script>
-    function toggleMobileMenu() {
-        const navLinks = document.getElementById('navLinks');
-        navLinks.classList.toggle('show');
-    }
-</script>
-
-    <script src="script.js"></script>
 </body>
 </html>
