@@ -4,7 +4,7 @@ A modern, responsive personal portfolio website showcasing my journey as an IT s
 
 ## 🚀 Live Demo
 
-Visit the live portfolio: [Your Portfolio URL]
+Visit the live portfolio: [https://onalennas.github.io/onalennaHamese-Portfolio/]
 
 ## 📋 Table of Contents
 
