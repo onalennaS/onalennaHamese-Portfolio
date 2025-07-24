@@ -1545,6 +1545,60 @@
         align-self: center;
     }
 }
+/* Base styles */
+.navbar {
+    background-color: #fff;
+    padding: 1rem;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Mobile Styles */
+.mobile-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: white;
+        border: 1px solid #ddd;
+        padding: 1rem;
+        width: 200px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+}
+
 </style>
 
 </head>
@@ -1552,22 +1606,29 @@
     
 
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-           
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                
-            </ul>
-            <button class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
+<nav class="navbar">
+    <div class="nav-container">
+        <button class="mobile-menu" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+<script>
+    const toggleButton = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    toggleButton.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
+</script>
+
 
     <!-- Main Content -->
 <main class="main-content">
