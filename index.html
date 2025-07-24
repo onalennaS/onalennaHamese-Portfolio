@@ -17,7 +17,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #1a1a1a;
-            padding-top: 100px;
+            
             background: linear-gradient(135deg, #f8f6f3 0%, #e8e2db 50%, #d4c4b0 100%);
             min-height: 100vh;
         }
@@ -29,7 +29,7 @@
             backdrop-filter: blur(10px);
             padding: 1rem 0;
             position: fixed;
-            top: 20px;
+            top: 0;
             width: 100%;
             z-index: 999;
             box-shadow: 0 1px 10px rgba(0,0,0,0.1);
@@ -92,7 +92,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            padding: 2rem;
+            padding: 0rem;
         }
 
         .hero-content {
@@ -417,15 +417,12 @@
         }
 
         /* MOBILE RESPONSIVE STYLES */
-        @media (max-width: 768px) {
-            body {
-                padding-top: 140px;
-            }
-
-            .navbar {
-                top: 140px;
-            }
-
+       @media (max-width: 768px) {
+    /* Remove the padding-top and navbar top rules */
+    .main-content {
+        margin-top: 60px;
+    }
+}
             .main-content {
                 margin-top: 60px;
             }
@@ -1598,18 +1595,40 @@
         display: block;
     }
 }
+.mobile-menu i {
+    transition: opacity 0.3s ease;
+}
 
+.nav-links {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* For mobile menu animation */
+@media (max-width: 768px) {
+    .nav-links {
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    .nav-links.show {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+}
 </style>
 
 </head>
 <body>
     
 
-    <!-- Navigation -->
+<!-- Navigation -->
 <nav class="navbar">
     <div class="nav-container">
         <button class="mobile-menu" id="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-bars" id="menu-icon"></i>
+            <i class="fas fa-times" id="close-icon" style="display: none;"></i>
         </button>
         <ul class="nav-links" id="nav-links">
             <li><a href="#home" class="active">Home</a></li>
@@ -1620,31 +1639,186 @@
         </ul>
     </div>
 </nav>
+
 <script>
     const toggleButton = document.getElementById('mobile-menu-toggle');
     const navLinks = document.getElementById('nav-links');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
 
     toggleButton.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
+        const isMenuOpen = navLinks.classList.toggle('show');
+        
+        // Toggle between menu and close icons
+        if (isMenuOpen) {
+            menuIcon.style.display = 'none';
+            closeIcon.style.display = 'inline-block';
+        } else {
+            menuIcon.style.display = 'inline-block';
+            closeIcon.style.display = 'none';
+        }
+    });
+
+    // Close menu when a link is clicked (optional)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+            menuIcon.style.display = 'inline-block';
+            closeIcon.style.display = 'none';
+        });
     });
 </script>
 
 
     <!-- Main Content -->
 <main class="main-content">
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Hi, I'm <span class="highlight">Seja Onalenna Hamese</span></h1>
-                <p>Dedicated IT student in my final semester at Vaal University of Technology, passionate about full-stack development and creating innovative digital solutions. I specialize in modern web technologies and love transforming complex problems into elegant, efficient code.</p>
-                <a href="#contact" class="cta-button">Get In Touch</a>
-            </div>
-            <div class="profile-image-container">
-                <img src="js/images/image.jpg" alt="Seja Onalenna Hamese - Information Technology Student" class="profile-image">
+   <!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>Hi, I'm <span class="highlight">Seja Onalenna Hamese</span></h1>
+            <p>Dedicated IT student in my final semester at Vaal University of Technology, passionate about full-stack development and creating innovative digital solutions. I specialize in modern web technologies and love transforming complex problems into elegant, efficient code.</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+        
+        <div class="hero-visual">
+            <!-- Interactive Code Halo Container -->
+            <div class="code-halo">
+                <!-- Profile Image at Center -->
+                <div class="profile-image-container halo-center">
+                    <img src="js/images/image.jpg" alt="Seja Onalenna Hamese" class="profile-image">
+                </div>
+                
+                <!-- Rotating Code Elements -->
+                <div class="halo-element" style="--i:1">
+                    <div class="code-bubble">HTML5</div>
+                    <i class="fab fa-html5"></i>
+                </div>
+                <div class="halo-element" style="--i:2">
+                    <div class="code-bubble">CSS3</div>
+                    <i class="fab fa-css3-alt"></i>
+                </div>
+                <div class="halo-element" style="--i:3">
+                    <div class="code-bubble">JS</div>
+                    <i class="fab fa-js"></i>
+                </div>
+                <div class="halo-element" style="--i:4">
+                    <div class="code-bubble">Java</div>
+                    <i class="fab fa-java"></i>
+                </div>
+                <div class="halo-element" style="--i:5">
+                    <div class="code-bubble">Python</div>
+                    <i class="fab fa-python"></i>
+                </div>
+                <div class="halo-element" style="--i:6">
+                    <div class="code-bubble">MySQL</div>
+                    <i class="fas fa-database"></i>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+    /* Add these styles to your existing CSS */
+    .hero-visual {
+        position: relative;
+        width: 350px;
+        height: 350px;
+    }
+
+    .code-halo {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .halo-center {
+        position: absolute;
+        z-index: 10;
+    }
+
+    .halo-element {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        animation: rotate 15s linear infinite;
+        animation-delay: calc(-2.5s * var(--i));
+    }
+
+    .halo-element i {
+        position: absolute;
+        left: 50%;
+        font-size: 1.8rem;
+        color: #8b7355;
+        transform: translateX(-50%) rotate(calc(360deg / 6 * var(--i))) translateX(120px) rotate(calc(-360deg / 6 * var(--i)));
+        background: rgba(248, 246, 243, 0.9);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 15px rgba(139, 115, 85, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .code-bubble {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) rotate(calc(360deg / 6 * var(--i))) translateX(120px) rotate(calc(-360deg / 6 * var(--i)));
+        background: #1a1a1a;
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        top: -30px;
+        white-space: nowrap;
+    }
+
+    .halo-element:hover i {
+        transform: translateX(-50%) rotate(calc(360deg / 6 * var(--i))) translateX(120px) rotate(calc(-360deg / 6 * var(--i))) scale(1.2);
+        color: #1a1a1a;
+        background: #8b7355;
+    }
+
+    .halo-element:hover .code-bubble {
+        opacity: 1;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .hero-visual {
+            width: 280px;
+            height: 280px;
+            order: 1;
+            margin-bottom: 2rem;
+        }
+
+        .halo-element i {
+            transform: translateX(-50%) rotate(calc(360deg / 6 * var(--i))) translateX(90px) rotate(calc(-360deg / 6 * var(--i)));
+        }
+
+        .code-bubble {
+            transform: translateX(-50%) rotate(calc(360deg / 6 * var(--i))) translateX(90px) rotate(calc(-360deg / 6 * var(--i)));
+        }
+    }
+</style>
 
         <!-- Skills Section -->
         <section id="skills" class="skills-section">
