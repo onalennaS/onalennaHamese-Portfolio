@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Seja Onalenna Hamese</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init('T-ZiVP4Rrl4DwPEBk');
+        })();
+    </script>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <button class="mobile-menu" id="mobile-menu-toggle">
+            <i class="fas fa-bars" id="menu-icon"></i>
+            <i class="fas fa-times" id="close-icon" style="display: none;"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="main-content">
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <div class="contact-intro">
+                <p>Ready to start your next project or discuss opportunities? I'd love to hear from you. Whether you have a question, want to collaborate, or just want to say hello, feel free to reach out!</p>
+            </div>
+            
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3><i class="fas fa-address-card"></i> Get In Touch</h3>
+                    <p>Prefer to reach out directly? Here are my contact details:</p>
+
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-details">
+                                <h4>Email</h4>
+                                <p>onalennahamese07@gmail.com</p>
+                                <a href="mailto:onalennahamese07@gmail.com" class="method-link">Send Email →</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="method-details">
+                                <h4>Phone</h4>
+                                <p>+27 66 265 8784</p>
+                                <a href="tel:+27662658784" class="method-link">Call Now →</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="method-details">
+                                <h4>GitHub</h4>
+                                <p>github.com/onalennaS</p>
+                                <a href="https://github.com/onalennaS" target="_blank" class="method-link">View Profile →</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-details">
+                                <h4>Location</h4>
+                                <p>Vereeniging, Gauteng</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h3><i class="fas fa-paper-plane"></i> Send a Message</h3>
+                    <form id="contactForm" onsubmit="handleContactForm(event)">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Sending...
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Custom Modal for Messages -->
+            <div id="messageModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <div class="modal-body">
+                        <i id="modalIcon" class="fas"></i>
+                        <h3 id="modalTitle"></h3>
+                        <p id="modalMessage"></p>
+                    </div>
+                </div>
+            </div>
+
+</section>
+</main>
+
+<script>
+(function(){
+    const toggleButton = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    if(!toggleButton) return;
+    toggleButton.addEventListener('click', () => {
+        const isMenuOpen = navLinks.classList.toggle('show');
+        if (isMenuOpen) {
+            menuIcon.style.display = 'none';
+            closeIcon.style.display = 'inline-block';
+        } else {
+            menuIcon.style.display = 'inline-block';
+            closeIcon.style.display = 'none';
+        }
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+            menuIcon.style.display = 'inline-block';
+            closeIcon.style.display = 'none';
+        });
+    });
+})();
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>

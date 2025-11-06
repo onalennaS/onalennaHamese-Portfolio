@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Seja Onalenna Hamese</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <button class="mobile-menu" id="mobile-menu-toggle">
+            <i class="fas fa-bars" id="menu-icon"></i>
+            <i class="fas fa-times" id="close-icon" style="display: none;"></i>
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="skills.html" class="active">Skills</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="main-content">
+    <section id="skills" class="skills-section">
+        <div class="skills-container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-intro">
+                <p>I specialize in full-stack development with expertise across frontend, backend, and database technologies. Here's my technical toolkit:</p>
+            </div>
+
+            <div class="skills-categories">
+                    <!-- Frontend Technologies -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-laptop-code"></i>Frontend Development</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item skill-html" data-skill="html">
+                                <i class="fab fa-html5"></i>
+                                <h4>HTML5</h4>
+                                <p>Semantic markup</p>
+                            </div>
+                            <div class="skill-item skill-css" data-skill="css">
+                                <i class="fab fa-css3-alt"></i>
+                                <h4>CSS3</h4>
+                                <p>Modern styling</p>
+                            </div>
+                            <div class="skill-item skill-javascript" data-skill="js">
+                                <i class="fab fa-js-square"></i>
+                                <h4>JavaScript</h4>
+                                <p>ES6+ features</p>
+                            </div>
+                            <div class="skill-item skill-bootstrap" data-skill="bootstrap">
+                                <i class="fab fa-bootstrap"></i>
+                                <h4>Bootstrap</h4>
+                                <p>Responsive design</p>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- Backend Technologies -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-server"></i>Backend Development</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item skill-java" data-skill="java">
+                                <i class="fab fa-java"></i>
+                                <h4>Java</h4>
+                                <p>Enterprise apps</p>
+                            </div>
+                            <div class="skill-item skill-php" data-skill="php">
+                                <i class="fab fa-php"></i>
+                                <h4>PHP</h4>
+                                <p>Server-side logic</p>
+                            </div>
+                            <div class="skill-item skill-python" data-skill="python">
+                                <i class="fab fa-python"></i>
+                                <h4>Python</h4>
+                                <p>Versatile development</p>
+                            </div>
+                            <div class="skill-item skill-firebase" data-skill="firebase">
+                                <i class="fas fa-fire"></i>
+                                <h4>Firebase</h4>
+                                <p>Cloud services</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Database Technologies -->
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i>Database Management</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item skill-mysql" data-skill="mysql">
+                                <i class="fas fa-database"></i>
+                                <h4>MySQL</h4>
+                                <p>Relational DB</p>
+                            </div>
+                            <div class="skill-item skill-database" data-skill="sqlite">
+                                <i class="fas fa-table"></i>
+                                <h4>SQLite</h4>
+                                <p>Lightweight DB</p>
+                            </div>
+                            <div class="skill-item skill-database" data-skill="mariadb">
+                                <i class="fas fa-server"></i>
+                                <h4>MariaDB</h4>
+                                <p>Open source DB</p>
+                            </div>
+                            <div class="skill-item skill-framework" data-skill="frameworks">
+                                <i class="fas fa-cogs"></i>
+                                <h4>Frameworks</h4>
+                                <p>Various tools</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               <!-- Tech Stack Highlight -->
+                <div class="tech-highlight">
+                    <h3>Full Stack Expertise</h3>
+                    <p>Combining these technologies to build complete, scalable solutions</p>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Full Stack Development</span>
+                        <span class="tech-badge">Responsive Design</span>
+                        <span class="tech-badge">Database Design</span>
+                        <span class="tech-badge">API Development</span>
+                        <span class="tech-badge">Cloud Integration</span>
+                        <span class="tech-badge">Version Control</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+</main>
+
+<script>
+(function(){
+    const toggleButton = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    if(!toggleButton) return;
+    toggleButton.addEventListener('click', () => {
+        const isMenuOpen = navLinks.classList.toggle('show');
+        if (isMenuOpen) {
+            menuIcon.style.display = 'none';
+            closeIcon.style.display = 'inline-block';
+        } else {
+            menuIcon.style.display = 'inline-block';
+            closeIcon.style.display = 'none';
+        }
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+            menuIcon.style.display = 'inline-block';
+            closeIcon.style.display = 'none';
+        });
+    });
+})();
+</script>
+</body>
+</html>

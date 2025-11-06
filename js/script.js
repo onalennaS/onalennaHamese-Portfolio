@@ -7,44 +7,76 @@ function toggleMobileMenu() {
 // Contact Form Handler
 function handleContactForm(event) {
     event.preventDefault();
-    
+
     const submitBtn = event.target.querySelector('.submit-btn');
     const btnText = submitBtn.querySelector('.btn-text');
     const btnLoading = submitBtn.querySelector('.btn-loading');
-    
+
     // Show loading state
     if (btnText && btnLoading) {
         btnText.style.display = 'none';
         btnLoading.style.display = 'inline';
         submitBtn.disabled = true;
     }
-    
+
     const formData = new FormData(event.target);
     const name = formData.get('name');
     const email = formData.get('email');
-    const company = formData.get('company');
     const subject = formData.get('subject');
-    const budget = formData.get('budget');
-    const timeline = formData.get('timeline');
     const message = formData.get('message');
-    const updates = formData.get('updates');
-    
-    // Simulate form submission delay
-    setTimeout(() => {
-        // Here you would typically send the data to a backend service
-        // For now, we'll just show a success message
-        alert(`Thank you ${name}! Your message has been received. I'll get back to you soon.`);
-        
-        // Reset form
-        event.target.reset();
-        
-        // Reset button state
-        if (btnText && btnLoading) {
-            btnText.style.display = 'inline';
-            btnLoading.style.display = 'none';
-            submitBtn.disabled = false;
-        }
-    }, 1500);
+
+    // Prepare template parameters
+    const templateParams = {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message
+    };
+
+    // Send email using EmailJS
+    emailjs.send('service_ubyvd96', 'template_pw1p1mi', templateParams)
+        .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            Swal.fire({
+                title: 'Message Sent!',
+                text: `Thank you ${name}! Your message has been sent successfully. I'll get back to you soon.`,
+                icon: 'success',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#D2B48C',
+                background: '#ffffff',
+                color: '#1a1a1a',
+                iconColor: '#D2B48C'
+            });
+
+            // Reset form
+            event.target.reset();
+
+            // Reset button state
+            if (btnText && btnLoading) {
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        }, function(error) {
+            console.log('FAILED...', error);
+            Swal.fire({
+                title: 'Error',
+                text: 'Sorry, there was an error sending your message. Please try again later or contact me directly.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#D2B48C',
+                background: '#ffffff',
+                color: '#1a1a1a',
+                iconColor: '#dc3545'
+            });
+
+            // Reset button state
+            if (btnText && btnLoading) {
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
 }
 
 // Smooth scrolling for anchor links
